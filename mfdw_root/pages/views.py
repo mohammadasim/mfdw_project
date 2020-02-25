@@ -1,7 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.core.mail import send_mail, get_connection
 from django.http import HttpResponseRedirect
-from .models import Page
+from django.shortcuts import render, get_object_or_404
+
 from .forms import ContactForm
+from .models import Page
 
 
 def index(request, pagename):
@@ -25,6 +27,14 @@ def contact(request):
         if form.is_valid():
             cd = form.cleaned_data
             # assert False (for testing purpose)
+            con = get_connection('django.core.mail.backends.console.EmailBackend')
+            send_mail(
+                cd['subject'],
+                cd['message'],
+                cd.get('email', 'noreply@example.com'),
+                ['siteowner@example.com'],
+                connection=con
+            )
             return HttpResponseRedirect('/contact?submitted=True')
     else:
         form = ContactForm()
