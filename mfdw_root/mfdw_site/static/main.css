@@ -96,3 +96,19 @@ input {
     border: 1px solid green;
     border-radius: 3px;
 }
+.required label:after {
+    content: "*";
+}
+.quotehdr th {
+   background-color: #4c4c4c;
+   color: white;
+   text-align: center;
+   padding: 8px 5px;
+   border: none;
+}
+.quoterow td {
+    padding: 5px 10px;
+}
+.altrow {
+    background-color: #e0e0e0;
+}
