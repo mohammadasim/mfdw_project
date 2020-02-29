@@ -7,6 +7,9 @@ from .models import Page
 
 
 def index(request, pagename):
+    """
+    A view to access pages based on the page name in the url.
+    """
     pagename = '/' + pagename
 
     pg = get_object_or_404(Page, permalink=pagename)
@@ -14,13 +17,16 @@ def index(request, pagename):
         'title': pg.title,
         'content': pg.bodytext,
         'last_updated': pg.update_date,
-        'page_list': Page.objects.all()
+        'page_list': Page.objects.all()  # A list of all pages
+        # created is sent to the
+        # template where they are displayed in the page's side bar
     }
-    # assert False
+    # assert False # This is for testing purposes and to debug
     return render(request, 'pages/page.html', context)
 
 
 def contact(request):
+    """ A view to allow users to contact the site admin """
     submitted = False
     if request.method == 'POST':
         form = ContactForm(request.POST)

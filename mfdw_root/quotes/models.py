@@ -1,3 +1,6 @@
+"""
+A model for a quote submitted by a user of the website
+"""
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -14,6 +17,10 @@ PRIORITY_CHOICES = (
 
 
 class Quote(models.Model):
+    """
+    A model representing a Quote submitted by a user
+    on the website
+    """
     name = models.CharField(max_length=100)
     position = models.CharField(max_length=60,
                                 blank=True)

@@ -29,7 +29,6 @@ ALLOWED_HOSTS = ["127.0.0.1"]
 # Application definition
 
 INSTALLED_APPS = [
-    'quotes.apps.QuotesConfig',
     'pages.apps.PagesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mfdw_site',
+    'quotes.apps.QuotesConfig',
 ]
 
 MIDDLEWARE = [
